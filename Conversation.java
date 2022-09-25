@@ -46,12 +46,21 @@ class Conversation {
 
       //Iterate through all the words in the input string and make all necessary edits. Words.length is how many words are in the sentence.
       for (int x = 0; x < words.length; x++) {
-        
         //If the xth word in our sentence happens to be the same as a key in our map, replace it with the corresponding value.
         if(map.containsKey(words[x])) {
           str = str.replace(words[x], (String)map.get(words[x]));       //(String) is saying "treat the value u get from map as a string"
         }
       }
+
+      //Replace punctuation with a ?
+      str = str.replace(".", "?");
+      str = str.replace("!", "?");
+
+      //Capitalize: Cut off first letter, capitalize it, and concat it back on.
+      String firstLetter = str.substring(0,1);
+      String restOf = str.substring(1);
+      firstLetter = firstLetter.toUpperCase();
+      str = firstLetter + restOf;
 
       //Choose a different reponse from my reponse list for every new round.
       if (count>3) { 
