@@ -26,11 +26,11 @@ Listed below are various aspects of the assignment.  When you turn in your work,
 
 **YES** 1 pt: Detects the requested set of mirror words (at minimum)
 
-**PART** 1 pt: Replaces simple mirror words appropriately (unpunctuated, lowercase)
+**YES** 1 pt: Replaces simple mirror words appropriately (unpunctuated, lowercase)
 
 ### Level 3 (3 pts)
 
-**PART** 1 pt: Makes all appropriate mirror replacements
+**YES** 1 pt: Makes all appropriate mirror replacements
 
 **YES** 1 pt: Stores transcript of the conversation in an array
 
@@ -40,7 +40,7 @@ Listed below are various aspects of the assignment.  When you turn in your work,
 
 _____ (Kudos!) Handles mirror words with punctuation
 
-_____ (Kudos!) Generates output with correct punctuation & capitalization
+**PART** (Kudos!) Generates output with correct punctuation & capitalization
 
 _____ (Kudos!) Handles you --> me/I dilemma
 

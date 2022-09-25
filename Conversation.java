@@ -11,8 +11,9 @@ class Conversation {
   public static void main(String[] arguments) {
     
     //Setting up stuff I need for later
-    Scanner ask = new Scanner(System.in);                                                   //System.in is a standard input stream and I'm naming my scanner "ask"
-    String[] response = {" Say more.", " Talk to me about that.", " Wow", " Why?"};       //makes a new array filled with responses to be used later
+    Scanner ask = new Scanner(System.in);                                                 //System.in is a standard input stream and I'm naming my scanner "ask"
+    String[] response = {" Say more.", " Talk to me about that.", " Wow", " Why?", 
+      "Can you expand on that?", "mHmm", "Interesting.", "Haha.", "I feel that."};        //makes a new array filled with responses to be used later
     int responseIndex = 0;
     //String botResponse = "";
     ArrayList<String> convoLog = new ArrayList<String>();
