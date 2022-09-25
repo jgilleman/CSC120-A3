@@ -1,5 +1,8 @@
 /*
+  Desc: Conversation.java is basically the main program. It creates and manages the entire chatbot and all its features.
   Author: Janna Gilleman
+  Coding Buddies: Ryan (K) Emerson and Chelsea
+  Date: 9/24/22
 */
 import java.util.*;
 
@@ -11,7 +14,9 @@ class Conversation {
     Scanner ask = new Scanner(System.in);                                                   //System.in is a standard input stream and I'm naming my scanner "ask"
     String[] response = {" Say more.", " Talk to me about that.", " Wow", " Why?"};       //makes a new array filled with responses to be used later
     int responseIndex = 0;
-    
+    //String botResponse = "";
+    ArrayList<String> convoLog = new ArrayList<String>();
+
     //Set up a map (basically dict2.0) where both the keys and the values are strings
     HashMap<String, String> map = new HashMap<String, String>();
     map.put("your", "my");
@@ -24,34 +29,29 @@ class Conversation {
     map.put("yours", "mine");
     map.put(".", "?");
 
-    //My target/replacement bank
-    /* NEED TO FIGURE OUT HOW TO DO   you -> I    &   your -> my */
-    //String[] target = {"I ", " am", " me ", " my ", "Mine ", ".", " mine ", "I'm"};
-    //String[] replacement = {"you ", " are ", " you ", " your ", "Your ",  "?", " yours", "You're"};
-
     //Intial Chatbot Intro. Ask for number of convo rounds.
-    System.out.println("Chatbot: Heya! How long would you like to talk for?\n"
+    System.out.println("\n<><><><> WELCOME TO CHATBOT TOBOR <><><><>\n\n" + "Tobor: Heya! How long would you like to talk for?\n"
       + "Enter number of rounds:");
     int numRounds = ask.nextInt();          //assigns input to a variable called numRounds which sets the max time the for loop will repeat
     ask.nextLine();                         //clears input buffer
-    System.out.println("\nChatbot: Awesome. Well, what's on your mind?");
+    System.out.println("\nTobor: Awesome. Well, what's on your mind?");
 
     //Main part of the program.
     for (int count=0; count < numRounds; count++) {
 
       //Ask for a sentence from the user
       String str = ask.nextLine();
+      String originalInput = str;
       String[] words = str.split(" ");
 
-      //Iterate through replacement array. Replace all targets with their replacements.
+      //Iterate through all the words in the input string and make all necessary edits. Words.length is how many words are in the sentence.
       for (int x = 0; x < words.length; x++) {
-        //str = str.replace(target[x], replacement[x]);
+        
+        //If the xth word in our sentence happens to be the same as a key in our map, replace it with the corresponding value.
         if(map.containsKey(words[x])) {
-          str = str.replace(words[x], (String)map.get(words[x]));       //(string) is saying "treat the value u get from map as a string"
+          str = str.replace(words[x], (String)map.get(words[x]));       //(String) is saying "treat the value u get from map as a string"
         }
-
       }
-
 
       //Choose a different reponse from my reponse list for every new round.
       if (count>3) { 
@@ -61,11 +61,21 @@ class Conversation {
       }
 
       //Print the crafted response
-      System.out.println("Chatbot: " + str + response[responseIndex]);
+      String botResponse = "Tobor: " + str + response[responseIndex];
+      System.out.println(botResponse);
+
+      //Add our edited input sentence to the convoLog
+      convoLog.add(originalInput + "\n");
+      convoLog.add(botResponse + "\n");
     }
 
-    //Exit conversation.
-    System.out.println("Chatbot: Cool cool cool- Thanks for talkin, my guy; I'm gonna head out.\n");
+    //Exit conversation. Print convoLog. Close Scanner.
+    System.out.println("Tobor: Cool cool cool- Thanks for talkin, my guy; I'm gonna head out.\n" 
+      + "By the way, here's a record of everything we said:\n\nCHATBOT LOG:");
+    for (int y = 0; y <= (numRounds*2)-1; y++) {
+      System.out.print(convoLog.get(y));
+    }
+    System.out.println("\n<><>Goodbye!<><>");
     ask.close();
 
   }
