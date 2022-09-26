@@ -2,6 +2,7 @@
   Desc: Conversation.java is basically the main program. It creates and manages the entire chatbot and all its features.
   Author: Janna Gilleman
   Coding Buddies: Ryan (K) Emerson and Chelsea
+  Resources: W3 documentation of various methods like hashmap
   Date: 9/24/22
 */
 import java.util.*;
@@ -15,6 +16,7 @@ class Conversation {
     String[] response = {" Say more.", " Talk to me about that.", " Wow", " Why?", 
       "Can you expand on that?", "mHmm", "Interesting.", "Haha.", "I feel that."};        //makes a new array filled with responses to be used later
     int responseIndex = 0;
+
     //String botResponse = "";
     ArrayList<String> convoLog = new ArrayList<String>();
 
@@ -37,8 +39,12 @@ class Conversation {
     ask.nextLine();                         //clears input buffer
     System.out.println("\nTobor: Awesome. Well, what's on your mind?");
 
-    //Main part of the program.
+    //Main part of the program. I iteration per convo round.
     for (int count=0; count < numRounds; count++) {
+
+      //Set up some inner definitions. These need to be defined for every cycle.
+      Boolean mirrorPresent = false;
+      String botResponse = "";
 
       //Ask for a sentence from the user
       String str = ask.nextLine();
@@ -50,6 +56,7 @@ class Conversation {
         //If the xth word in our sentence happens to be the same as a key in our map, replace it with the corresponding value.
         if(map.containsKey(words[x])) {
           str = str.replace(words[x], (String)map.get(words[x]));       //(String) is saying "treat the value u get from map as a string"
+          mirrorPresent = true;
         }
       }
 
@@ -70,9 +77,14 @@ class Conversation {
         responseIndex = count;
       }
 
-      //Print the crafted response
-      String botResponse = "Tobor: " + str + response[responseIndex];
-      System.out.println(botResponse);
+      //Print the correct crafted response
+      if (mirrorPresent) {
+        botResponse = "Tobor:" + str;
+        System.out.println(botResponse);
+      } else {
+        botResponse = "Tobor:" + response[responseIndex];
+        System.out.println(botResponse);
+      }
 
       //Add our edited input sentence to the convoLog
       convoLog.add(originalInput + "\n");
