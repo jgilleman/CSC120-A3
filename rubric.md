@@ -22,7 +22,7 @@ Listed below are various aspects of the assignment.  When you turn in your work,
 
 ### Level 2 (3 pts)
 
-**PART** 1 pt: Uses a canned response when no mirror words detected
+**YES** 1 pt: Uses a canned response when no mirror words detected
 
 **YES** 1 pt: Detects the requested set of mirror words (at minimum)
 
@@ -38,11 +38,11 @@ Listed below are various aspects of the assignment.  When you turn in your work,
 
 ## Kudos:
 
-_____ (Kudos!) Handles mirror words with punctuation
+**NO** (Kudos!) Handles mirror words with punctuation
 
 **PART** (Kudos!) Generates output with correct punctuation & capitalization
 
-_____ (Kudos!) Handles you --> me/I dilemma
+**NO** (Kudos!) Handles you --> me/I dilemma
 
 
 
